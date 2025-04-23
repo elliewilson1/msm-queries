@@ -11,4 +11,14 @@ class DirectorsController < ApplicationController
 
     render({ :template => "director_templates/details" })
   end
+  def youngest
+    @the_youngest_director = Director.wherenot({ :dob => nil }).order({ :dob => :asc })
+
+    render({ :template => "director_templates/youngest" })
+  end
+  def eldest
+    @the_eldest_director = Director.wherenot({ :dob => nil }).order({ :dob => :asc })
+
+    render({ :template => "director_templates/eldest" })
+  end
 end
